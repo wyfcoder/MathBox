@@ -112,38 +112,37 @@ MainWindow::~MainWindow()
 
 void MainWindow::createActions()
 {
-    OpenFileAction = new QAction(QIcon("D:\\MathBox\\UI\\MB3\\picture\\open.jpg"),("打开"),this);
+    OpenFileAction = new QAction(QIcon(":/picture/open.jpg"),("打开"),this);
     OpenFileAction ->setStatusTip("打开一个文件");
     connect(OpenFileAction,SIGNAL(triggered(bool)),this,SLOT(OpenFile()));
 
-    NewFileAction = new QAction(QIcon("D:\\MathBox\\UI\\MB3\\picture\\new.jpg"),("新建"),this);
+    NewFileAction = new QAction(QIcon(":/picture/new.jpg"),("新建"),this);
     NewFileAction ->setStatusTip("新建一个编辑窗口");
     connect(NewFileAction,SIGNAL(triggered(bool)),this,SLOT(NewFile()));
 
-    SaveFileAction = new QAction(QIcon("D:\\MathBox\\UI\\MB3\\picture\\save.jpg"),("存储"),this);
+    SaveFileAction = new QAction(QIcon(":/picture/save.jpg"),("存储"),this);
     SaveFileAction ->setStatusTip("存储一个文件");
     connect(SaveFileAction,SIGNAL(triggered(bool)),this,SLOT(SaveFile()));
 
-    DeleteAction = new QAction(QIcon("D:\\MathBox\\UI\\MB3\\picture\\delete1.jpg"),("删除"),this);
+    DeleteAction = new QAction(QIcon(":/picture/delete1.jpg"),("删除"),this);
     DeleteAction ->setStatusTip("删除显示");
     connect(DeleteAction,SIGNAL(triggered(bool)),this,SLOT(Delete()));
 
-    BackAction = new QAction(QIcon("D:\\MathBox\\UI\\MB3\\picture\\back.jpg"),("后退"),this);
+    BackAction = new QAction(QIcon(":/picture/back.jpg"),("后退"),this);
     BackAction ->setStatusTip("后退一步");
     connect(BackAction,SIGNAL(triggered(bool)),this,SLOT(Back()));
 
-    ForwardAction = new QAction(QIcon("D:\\MathBox\\UI\\MB3\\picture\\forward.jpg"),("前进"),this);
+    ForwardAction = new QAction(QIcon(":/picture/forward.jpg"),("前进"),this);
     ForwardAction ->setStatusTip("前进一步");
     connect(ForwardAction,SIGNAL(triggered(bool)),this,SLOT(Forward()));
 
-    PaintAction = new QAction(QIcon("D:\\MathBox\\UI\\MB3\\picture\\paint.jpg"),("绘图"),this);
+    PaintAction = new QAction(QIcon(":/picture/paint.jpg"),("绘图"),this);
     PaintAction ->setStatusTip("绘制相关数据图片");
     connect(PaintAction,SIGNAL(triggered(bool)),this,SLOT(Paint()));
 
-    MainWinAction = new QAction(QIcon("D:\\MathBox\\UI\\MB3\\picture\\main.jpg"),("主窗口"),this);
+    MainWinAction = new QAction(QIcon(":/picture/main.jpg"),("主窗口"),this);
     MainWinAction ->setStatusTip("窗口恢复开始状态");
     connect(MainWinAction,SIGNAL(triggered(bool)),this,SLOT(ReMain()));
-
 }
 
 void MainWindow::createToolBars()

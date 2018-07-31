@@ -40,3 +40,6 @@ DISTFILES += \
     picture/open.jpg \
     picture/paint.jpg \
     picture/save.jpg
+
+RESOURCES += \
+    phtoto.qrc
