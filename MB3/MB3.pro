@@ -24,9 +24,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    matrix.cpp \
+    number.cpp \
+    mathi.cpp \
+    mi.cpp \
+    MianGauss.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    matrix.h \
+    number.h \
+    mathi.h \
+    MainGauss.h \
+    mi.h
 
 FORMS    += mainwindow.ui
 

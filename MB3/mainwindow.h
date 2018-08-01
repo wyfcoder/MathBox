@@ -26,8 +26,9 @@
 
 static const int EXIT_CODE_REBOOT = -123456789;
 
-namespace Ui {
-class MainWindow;
+namespace Ui
+{
+  class MainWindow;
 }
 
 class MainWindow : public QMainWindow
