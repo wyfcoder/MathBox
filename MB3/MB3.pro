@@ -29,14 +29,20 @@ SOURCES += main.cpp\
     number.cpp \
     mathi.cpp \
     mi.cpp \
-    MianGauss.cpp
+    MianGauss.cpp \
+    classexplor.cpp \
+    compliedeals.cpp \
+    buildhelper.cpp
 
 HEADERS  += mainwindow.h \
     matrix.h \
     number.h \
     mathi.h \
     MainGauss.h \
-    mi.h
+    mi.h \
+    classexplor.h \
+    compliedeals.h \
+    buildhelper.h
 
 FORMS    += mainwindow.ui
 
@@ -49,7 +55,8 @@ DISTFILES += \
     picture/new.jpg \
     picture/open.jpg \
     picture/paint.jpg \
-    picture/save.jpg
+    picture/save.jpg \
+    picture/back.png
 
 RESOURCES += \
     phtoto.qrc

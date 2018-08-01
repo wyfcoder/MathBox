@@ -23,7 +23,12 @@
 #include<QListView>
 #include<QFileSystemModel>
 
-
+#include<vector>
+#include<QCompleter>
+#include"number.h"
+#include"matrix.h"
+#include"classexplor.h"
+using namespace  std;
 static const int EXIT_CODE_REBOOT = -123456789;
 
 namespace Ui
@@ -53,7 +58,9 @@ protected slots:
     void Forward();
     void Paint();
     void ReMain();
-
+    //--------------------
+    void change();
+    void find();
 private:
     Ui::MainWindow *ui;
 
@@ -123,8 +130,27 @@ private:
 
 
     QFileSystemModel *Filemodel;
+private:
+     QCompleter* completer;
+     ClassExplor* classExplor;
+//-----------------------------------------------------
+    void setFonts();
+    QString redColor(QString);
+    QString greenColor(QString);
+    QString blueColor(QString);
+    QString blackColor(QString);
+//------------------------------------------------------
+    void initVecor();
+    vector<QString> classNames;
+    QStringList names;
+    vector<Number> numbers;
+    vector<Matrix> matrixs;
+//------------------------------------------------------
+     void MakeCompleter();
+//------------------------------------------------------
+     int check(QString text);
+     void dealWrong(int number);
 
-    
 };
 
 #endif // MAINWINDOW_H
