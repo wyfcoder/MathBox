@@ -133,12 +133,17 @@ private:
 private:
      QCompleter* completer;
      ClassExplor* classExplor;
+ //----------------------------------------------------
+     QString null;
 //-----------------------------------------------------
     void setFonts();
     QString redColor(QString);
     QString greenColor(QString);
     QString blueColor(QString);
     QString blackColor(QString);
+    QString lightSkyBlue(QString);
+    QString lightGreen(QString);
+    QString lightGray(QString);
 //------------------------------------------------------
     void initVecor();
     vector<QString> classNames;
@@ -150,7 +155,10 @@ private:
 //------------------------------------------------------
      int check(QString text);
      void dealWrong(int number);
-
+     class_mode(QString name);
+//---------------------------------------------------------UI响应
+     void addNewNumber(Number number);
+     void rewriteNumber(QString name, double value);
 };
 
 #endif // MAINWINDOW_H

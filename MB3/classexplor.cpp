@@ -15,34 +15,6 @@ ClassExplor::ClassExplor(QWidget *parent) : QWidget(parent)
     this->setLayout(box);
 }
 
-void ClassExplor::Change(vector<Matrix> matrixes)
-{
-    if(oldMatrix.size()==0)
-    {
-        for(unsigned i=0;i<matrixes.size();i++)
-          {
-             oldMatrix.push_back(matrixes[i]);
-             addMatrixTableItem(matrixes[i]);
-         }
-    }
-    else
-    {
-        if(matrixes.size()>oldMatrix.size())
-        {
-            oldMatrix.push_back(matrixes[matrixes.size()-1]);
-            addMatrixTableItem(matrixes[matrixes.size()-1]);
-        }
-        else
-        for(unsigned i=0;i<matrixes.size();i++)
-        {
-            if(!(matrixes[i]==oldMatrix[i]))
-            {
-                changeTableItem(matrixes[i],i);
-                oldMatrix[i]=matrixes[i];
-            }
-        }
-    }
-}
 
 void ClassExplor::addMatrixTableItem(Matrix m)
 {

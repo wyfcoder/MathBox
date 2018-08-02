@@ -1,0 +1,15 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\matrix.o
+./release\number.o
+./release\mathi.o
+./release\mi.o
+./release\MianGauss.o
+./release\classexplor.o
+./release\compliedeals.o
+./release\buildhelper.o
+./release\qrc_phtoto.o
+./release\moc_mainwindow.o
+./release\moc_classexplor.o
+);

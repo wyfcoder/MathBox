@@ -155,7 +155,6 @@ bool ComplieDeals::helpNumberBuilder(vector<Number> lists)
        }
     }
 }
-
 bool ComplieDeals::isExit()
 {
     for(unsigned i=0;i<numbers.size();i++)
@@ -165,6 +164,7 @@ bool ComplieDeals::isExit()
             return true;
         }
     return false;
+
 }
 bool ComplieDeals::save()
 {

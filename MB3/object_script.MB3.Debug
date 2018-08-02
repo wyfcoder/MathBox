@@ -1,0 +1,15 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\matrix.o
+./debug\number.o
+./debug\mathi.o
+./debug\mi.o
+./debug\MianGauss.o
+./debug\classexplor.o
+./debug\compliedeals.o
+./debug\buildhelper.o
+./debug\qrc_phtoto.o
+./debug\moc_mainwindow.o
+./debug\moc_classexplor.o
+);

@@ -106,8 +106,9 @@ MainWindow::MainWindow(QWidget *parent) :
     this ->addDockWidget(Qt::RightDockWidgetArea,FileDock,Qt::Vertical);
 
 //-----------------------------------------------------------------------------
+     null="NULL";
      initVecor();
-     output->append(greenColor(">>Hello,welcome to MathBox"));
+     output->append(greenColor(">>Hello,welcome to MathBox."));
      output->append("");
      MakeCompleter();
      setFonts();
@@ -156,7 +157,6 @@ void MainWindow::createActions()
     MainWinAction = new QAction(QIcon(":/picture/main.png"),("主窗口"),this);
     MainWinAction ->setStatusTip("窗口恢复开始状态");
     connect(MainWinAction,SIGNAL(triggered(bool)),this,SLOT(ReMain()));
-
 }
 
 void MainWindow::createToolBars()
@@ -258,6 +258,23 @@ QString MainWindow::blackColor(QString s)
     return QObject::tr("<font color=black>%1</font>").arg(s);
 }
 
+QString MainWindow::lightSkyBlue(QString s)
+
+{
+          return QObject::tr("<font color=LightSeaGreen>%1</font>").arg(s);
+}
+
+QString MainWindow::lightGreen(QString s)
+{
+          return QObject::tr("<font color=LightGreen>%1</font>").arg(s);
+}
+
+QString MainWindow::lightGray(QString s)
+{
+    return QObject::tr("<font color=LightSlateGray>%1</font>").arg(s);
+
+}
+
 void MainWindow::MakeCompleter()
 {
     names<<"Matrix"<<"Function"<<"U_Input"<<"U_Output";
@@ -331,7 +348,7 @@ void MainWindow::dealWrong(int number)
             output->append(redColor(">>Not suitable for Number's style!"));
             break;
          case 8:
-            output->append(redColor(">>Expression is not alowed."));
+            output->append(redColor(">>Expression is not allowed."));
             break;
        }
         output->append(" ");
@@ -348,17 +365,111 @@ int MainWindow::check(QString text)
          buildhelper helper;
         if(text[0]=='N'||text[0]=='F'||text[0]=='M')
         {
-              int mode=helper.getClassMode(text);
+               int mode=helper.getClassMode(text);
                if(mode==-1) return 1;
+               QString name=helper.checkVirtulName();
+               if(QString::compare(name,null)==0) return 2;
+               switch (mode)
+              {
+               case 0:
+
+                   break;
+                case 1:
+                   if(!helper.helpNumberBuilder(numbers))
+                       return 7;
+                   else
+                   {
+                       Number newNumber(helper.value,name);
+                       addNewNumber(newNumber);
+                   }
+                   break;
+                case 2:
+
+                   break;
+               default:
+                   break;
+               }
         }
         else if(text[0]>='a'&&text[0]<='z')
         {
+            helper.inputText(text);
+            QString name=helper.checkVirtulName();
+            if(QString::compare(name,null)==0) return 2;
+            int mode=class_mode(name);
+            if(mode==-1) return 2;
+            switch (mode)
+           {
+            case 0:
+                break;
+             case 1:
+                if(!helper.helpNumberBuilder(numbers))
+                    return 7;
+                if(helper.isExpresson)
+                { output->append(lightGray(">>The result is "+ QString::number(helper.value))); }
+                else
+                {
+                    rewriteNumber(name,helper.value);
+                }
+                break;
+            case 2:
+                break;
+            default:
+                break;
+            }
+        }
+        else
+       {
+            helper.inputText(text);
+            if(!helper.helpNumberBuilder(numbers))
+                return 7;
+            output->append(lightGray(">>The result is "+ QString::number(helper.value)));
+            output->append("");
+       }
+    }
+    return 0;
+}
 
+int MainWindow::class_mode(QString name)
+{
+    for(unsigned i=0;i<numbers.size();i++)
+    {
+        if(name==numbers[i].name)
+            return 1;
+    }
+
+    for(unsigned i=0;i<matrixs.size();i++)
+    {
+        if(name==matrixs.size())
+            return 0;
+    }
+    return -1;
+}
+
+//----------------------------------------------------------UI响应
+void MainWindow::addNewNumber(Number number)
+{
+    numbers.push_back(number);
+    output->append(greenColor(">>New ")+blueColor(" Number "));
+    output->append("");
+    output->append(greenColor("@ ")+lightSkyBlue(number.name)+"="+lightGray(QString::number(number.value)));
+    output->append("");
+    classExplor->addNumberTableItem(number);
+}
+void MainWindow::rewriteNumber(QString name, double value)
+{
+    for(unsigned i=0;i<numbers.size();i++)
+    {
+        if(numbers[i].name==name)
+        {
+            numbers[i].value=value;
+            output->append(greenColor(">>Rewrite ")+blueColor(" Number "));
+            output->append("");
+            output->append(greenColor("@ ")+lightSkyBlue(name)+"="+lightGray(QString::number(value)));
+            output->append("");
+            classExplor->changeTableItem(numbers[i]);
         }
     }
 }
-
-
 
 
 

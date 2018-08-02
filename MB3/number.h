@@ -5,6 +5,7 @@ class Number
 {
 public:
     Number(double a,QString n);
+public:
     double value;
     QString name;
 };

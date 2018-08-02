@@ -20,8 +20,10 @@ public:
 
     QString setVirtualName();//获取表达式的变量名
 
-    void inputText(QString text);//获取变量名
+    void inputText(QString text);
+
     QString getName();//获得类名
+
     bool helpNumberBuilder(vector<Number>);//帮助构建数字类
 
     void helpCountNumberExpression(QString text);//计算数字表达式
