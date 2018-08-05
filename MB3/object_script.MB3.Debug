@@ -9,6 +9,10 @@ INPUT(
 ./debug\classexplor.o
 ./debug\compliedeals.o
 ./debug\buildhelper.o
+./debug\randcount.o
+./debug\parmtype.o
+./debug\function.o
+./debug\functionbuildhelper.o
 ./debug\qrc_phtoto.o
 ./debug\moc_mainwindow.o
 ./debug\moc_classexplor.o

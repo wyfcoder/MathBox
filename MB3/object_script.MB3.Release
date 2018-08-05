@@ -9,6 +9,10 @@ INPUT(
 ./release\classexplor.o
 ./release\compliedeals.o
 ./release\buildhelper.o
+./release\randcount.o
+./release\parmtype.o
+./release\function.o
+./release\functionbuildhelper.o
 ./release\qrc_phtoto.o
 ./release\moc_mainwindow.o
 ./release\moc_classexplor.o

@@ -28,6 +28,8 @@
 #include"number.h"
 #include"matrix.h"
 #include"classexplor.h"
+#include"randcount.h"
+#include"parmtype.h"
 using namespace  std;
 static const int EXIT_CODE_REBOOT = -123456789;
 
@@ -133,6 +135,7 @@ private:
 private:
      QCompleter* completer;
      ClassExplor* classExplor;
+     RandCount randcount;
  //----------------------------------------------------
      QString null;
 //-----------------------------------------------------
@@ -146,7 +149,9 @@ private:
     QString lightGray(QString);
 //------------------------------------------------------
     void initVecor();
+    void initProgrameTable();
     vector<QString> classNames;
+    vector<QString> programTable;
     QStringList names;
     vector<Number> numbers;
     vector<Matrix> matrixs;
@@ -156,6 +161,9 @@ private:
      int check(QString text);
      void dealWrong(int number);
      class_mode(QString name);
+//--------------------------------------------------------函数编程
+     int getFunctionCode(QString name);
+     ParmType singalParm(QString text);
 //---------------------------------------------------------UI响应
      void addNewNumber(Number number);
      void rewriteNumber(QString name, double value);

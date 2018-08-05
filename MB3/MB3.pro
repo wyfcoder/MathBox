@@ -32,7 +32,11 @@ SOURCES += main.cpp\
     MianGauss.cpp \
     classexplor.cpp \
     compliedeals.cpp \
-    buildhelper.cpp
+    buildhelper.cpp \
+    randcount.cpp \
+    parmtype.cpp \
+    function.cpp \
+    functionbuildhelper.cpp
 
 HEADERS  += mainwindow.h \
     matrix.h \
@@ -42,7 +46,11 @@ HEADERS  += mainwindow.h \
     mi.h \
     classexplor.h \
     compliedeals.h \
-    buildhelper.h
+    buildhelper.h \
+    randcount.h \
+    parmtype.h \
+    function.h \
+    functionbuildhelper.h
 
 FORMS    += mainwindow.ui
 

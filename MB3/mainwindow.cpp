@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include"buildhelper.h"
 #include<QStringListModel.h>
+#include"parmtype.h"
 using namespace std;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -107,7 +108,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
 //-----------------------------------------------------------------------------
      null="NULL";
+     for(int i=0;i<100;i++)
+     randcount.rand();
      initVecor();
+     initProgrameTable();
      output->append(greenColor(">>Hello,welcome to MathBox."));
      output->append("");
      MakeCompleter();
@@ -226,6 +230,11 @@ void MainWindow::initVecor()
     classNames.push_back("Number");//1
     classNames.push_back("Function");//2
 }
+
+void MainWindow::initProgrameTable()
+{
+    programTable.push_back("Pro_Rand");//0
+}
 void MainWindow::setFonts()
 {
     SearchLineEdit->setFont(QFont( "Microsoft YaHei" , 10 ,  QFont::Normal));
@@ -288,6 +297,8 @@ void MainWindow::MakeCompleter()
     names<<"MB_MatrixtoDownTriangle(Matrix a,Matrix save)"<<"MB_MatrixtoDownTriangle(Matrix a)";
     names<<"MB_MatrixInvers(Matrix a,Matrix save)"<<"MB_MatrixInvers(Matrix a)";
     names<<"Number";
+    names<<"Pro_Rand(Number save)";
+    names<<"Pro_Rand()";
     completer=new QCompleter();
     completer->setFilterMode(Qt::MatchStartsWith);
     completer->setCompletionMode(QCompleter::PopupCompletion);
@@ -390,7 +401,57 @@ int MainWindow::check(QString text)
                    break;
                }
         }
-        else if(text[0]>='a'&&text[0]<='z')
+          else if(text[0]=='P'&&text[1]=='r')
+        {
+            QString program;
+            int i=0;
+            for(;i<text.size();i++)
+            {
+               if(text[i]=='(')
+                   break;
+               program.append(text[i]);
+            }
+            int code=getFunctionCode(program);
+            if(code==-1)
+            {
+                return 5;
+            }
+            if(text[text.size()-2]!=')')
+            {
+                return 5;
+            }
+            i++;
+            int j=i;
+            QString parms;
+            while(i<text.size()-2)
+            {
+                parms.append(text[i]);
+                i++;
+            }
+            switch (code)
+           {
+            case 0://单个参数的情况
+            {
+                double r=randcount.rand();
+                if(text[j]==')')
+                {
+                    output->append(greenColor(">>Rand a number: ")+lightGray(QString::number(r)));
+                    output->append("");
+                }
+                else
+                {
+                    ParmType type=singalParm(parms);
+                    if(!type.isTrue||type.type!=1)
+                        return 5;
+                    rewriteNumber(type.name,r);
+                }
+            }
+                break;
+            default:
+                break;
+           }
+        }
+         else if(text[0]>='a'&&text[0]<='z')
         {
             helper.inputText(text);
             QString name=helper.checkVirtulName();
@@ -405,7 +466,9 @@ int MainWindow::check(QString text)
                 if(!helper.helpNumberBuilder(numbers))
                     return 7;
                 if(helper.isExpresson)
-                { output->append(lightGray(">>The result is "+ QString::number(helper.value))); }
+                {
+                    output->append(lightGray(">>The result is "+ QString::number(helper.value)));
+                }
                 else
                 {
                     rewriteNumber(name,helper.value);
@@ -444,7 +507,58 @@ int MainWindow::class_mode(QString name)
     }
     return -1;
 }
+//---------------------------------------------------------函数响应
+int MainWindow::getFunctionCode(QString name)
+{
+    int code=-1;
+    for(unsigned i=0;i<programTable.size();i++)
+        if(name==programTable[i])
+        {
+            code=i;
+            break;
+        }
+    return code;
+}
 
+ParmType MainWindow::singalParm(QString text)
+{
+    ParmType type;
+    type.isTrue=false;
+    bool isOk=false;
+        type.n=text.toInt(&isOk);
+        if(isOk)
+        {
+            type.type=4;
+        }
+        else
+        {
+          type.number=text.toDouble(&isOk);
+          if(isOk)
+          {
+              type.type=5;
+          }
+          else
+          {
+              for(unsigned i=0;i<numbers.size();i++)
+              {
+                  if(numbers[i].name==text)
+                  {
+                      type.isTrue=true;
+                      type.position=i;
+                      type.type=1;
+                      type.name=text;
+                      isOk=true;
+                      break;
+                  }
+              }
+              if(!isOk)
+              {
+                  //其他容器
+              }
+          }
+    }
+        return type;
+}
 //----------------------------------------------------------UI响应
 void MainWindow::addNewNumber(Number number)
 {

@@ -643,11 +643,12 @@ double ComplieDeals::count_smallBlock(unsigned start, unsigned end)
            }
            else
             {
-                unsigned j=start+1;
+                unsigned j=start+2;
                 for(;j<end;j++)
                     if(saves[j].mode==2&&saves[j].chars==',')
                         break;
                 sum=counter(start+2,j-1);
+
                 sum=pow(sum,counter(j+1,end-1));
             }
        }

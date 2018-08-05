@@ -19,6 +19,7 @@ buildhelper::buildhelper()
     functionName.push_back("Pow");
     functionName.push_back("Sqrt");
     Null="NULL";
+    isExpresson=false;
 }
 
 int buildhelper::getClassMode(QString message)
@@ -565,6 +566,11 @@ int buildhelper::blockEnd(unsigned position)
                     break;
                 }
             }
+            else if(c.chars==','&&K==0)
+            {
+                position--;
+                break;
+            }
         }
         position++;
     }
@@ -637,10 +643,19 @@ double buildhelper::count_smallBlock(unsigned start, unsigned end)
            }
            else
             {
-                unsigned j=start+1;
+                unsigned j=start+2;
+                int K=1;
                 for(;j<end;j++)
-                    if(saves[j].mode==2&&saves[j].chars==',')
-                        break;
+                {    if(saves[j].mode==2)
+                    {
+                        if(K==1&&saves[j].chars==',')
+                         break;
+                        if(saves[j].chars=='(')
+                            K++;
+                        else if(saves[j].chars==')')
+                            K--;
+                    }
+                }
                 sum=counter(start+2,j-1);
                 sum=pow(sum,counter(j+1,end-1));
             }
