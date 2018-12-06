@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[12];
-    char stringdata0[83];
+    QByteArrayData data[14];
+    char stringdata0[124];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,22 +32,25 @@ struct qt_meta_stringdata_MainWindow_t {
 static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
 QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
-QT_MOC_LITERAL(1, 11, 7), // "NewFile"
-QT_MOC_LITERAL(2, 19, 0), // ""
-QT_MOC_LITERAL(3, 20, 8), // "OpenFile"
-QT_MOC_LITERAL(4, 29, 8), // "SaveFile"
-QT_MOC_LITERAL(5, 38, 6), // "Delete"
-QT_MOC_LITERAL(6, 45, 4), // "Back"
-QT_MOC_LITERAL(7, 50, 7), // "Forward"
-QT_MOC_LITERAL(8, 58, 5), // "Paint"
-QT_MOC_LITERAL(9, 64, 6), // "ReMain"
-QT_MOC_LITERAL(10, 71, 6), // "change"
-QT_MOC_LITERAL(11, 78, 4) // "find"
+QT_MOC_LITERAL(1, 11, 11), // "closeWindow"
+QT_MOC_LITERAL(2, 23, 0), // ""
+QT_MOC_LITERAL(3, 24, 6), // "Search"
+QT_MOC_LITERAL(4, 31, 8), // "ShowTime"
+QT_MOC_LITERAL(5, 40, 6), // "Delete"
+QT_MOC_LITERAL(6, 47, 5), // "Paint"
+QT_MOC_LITERAL(7, 53, 8), // "ShowHelp"
+QT_MOC_LITERAL(8, 62, 16), // "QTreeWidgetItem*"
+QT_MOC_LITERAL(9, 79, 4), // "item"
+QT_MOC_LITERAL(10, 84, 21), // "ShowHelpActionConnect"
+QT_MOC_LITERAL(11, 106, 6), // "change"
+QT_MOC_LITERAL(12, 113, 4), // "find"
+QT_MOC_LITERAL(13, 118, 5) // "close"
 
     },
-    "MainWindow\0NewFile\0\0OpenFile\0SaveFile\0"
-    "Delete\0Back\0Forward\0Paint\0ReMain\0"
-    "change\0find"
+    "MainWindow\0closeWindow\0\0Search\0ShowTime\0"
+    "Delete\0Paint\0ShowHelp\0QTreeWidgetItem*\0"
+    "item\0ShowHelpActionConnect\0change\0"
+    "find\0close"
 };
 #undef QT_MOC_LITERAL
 
@@ -62,27 +65,31 @@ static const uint qt_meta_data_MainWindow[] = {
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       0,       // signalCount
+       1,       // signalCount
+
+ // signals: name, argc, parameters, tag, flags
+       1,    0,   64,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   64,    2, 0x09 /* Protected */,
        3,    0,   65,    2, 0x09 /* Protected */,
        4,    0,   66,    2, 0x09 /* Protected */,
        5,    0,   67,    2, 0x09 /* Protected */,
        6,    0,   68,    2, 0x09 /* Protected */,
-       7,    0,   69,    2, 0x09 /* Protected */,
-       8,    0,   70,    2, 0x09 /* Protected */,
-       9,    0,   71,    2, 0x09 /* Protected */,
+       7,    1,   69,    2, 0x09 /* Protected */,
       10,    0,   72,    2, 0x09 /* Protected */,
       11,    0,   73,    2, 0x09 /* Protected */,
+      12,    0,   74,    2, 0x09 /* Protected */,
+      13,    0,   75,    2, 0x09 /* Protected */,
+
+ // signals: parameters
+    QMetaType::Void,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 8,    9,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -97,20 +104,28 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         MainWindow *_t = static_cast<MainWindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->NewFile(); break;
-        case 1: _t->OpenFile(); break;
-        case 2: _t->SaveFile(); break;
+        case 0: _t->closeWindow(); break;
+        case 1: _t->Search(); break;
+        case 2: _t->ShowTime(); break;
         case 3: _t->Delete(); break;
-        case 4: _t->Back(); break;
-        case 5: _t->Forward(); break;
-        case 6: _t->Paint(); break;
-        case 7: _t->ReMain(); break;
-        case 8: _t->change(); break;
-        case 9: _t->find(); break;
+        case 4: _t->Paint(); break;
+        case 5: _t->ShowHelp((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1]))); break;
+        case 6: _t->ShowHelpActionConnect(); break;
+        case 7: _t->change(); break;
+        case 8: _t->find(); break;
+        case 9: _t->close(); break;
         default: ;
         }
+    } else if (_c == QMetaObject::IndexOfMethod) {
+        int *result = reinterpret_cast<int *>(_a[0]);
+        {
+            typedef void (MainWindow::*_t)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&MainWindow::closeWindow)) {
+                *result = 0;
+                return;
+            }
+        }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObject MainWindow::staticMetaObject = {
@@ -147,6 +162,12 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         _id -= 10;
     }
     return _id;
+}
+
+// SIGNAL 0
+void MainWindow::closeWindow()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

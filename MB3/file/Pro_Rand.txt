@@ -1,0 +1,41 @@
+Pro_Rand说明文档
+
+1.使用原型：
+
+ Pro_Rand();
+
+ Pro_Rand(Number);
+
+
+2.说明：
+
+    该函数用于产生0~1的随机数，并且可以接受一个Number类的变量用于保存结果。
+
+
+3.
+
+#示例
+
+ Number a=10;
+
+ Pro_Rand();
+ 
+ Pro_Rand(a);
+
+
+#输出
+
+ >>New Number 
+
+ @ a=10
+
+ >>Rand a number: 0.258794
+
+ >>Rewrite Number 
+
+ @ a=0.451755
+
+ 
+
+
+

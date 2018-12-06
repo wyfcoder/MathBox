@@ -6,6 +6,7 @@
 #include<vector>
 #include"number.h"
 #include"matrix.h"
+#include "c.h"
 using namespace std;
 class buildhelper
 {
@@ -22,23 +23,9 @@ public:
 
     double value;
     bool isExpresson;
+    int position;        
+    vector<C> saves;
 private:
-     //存储结构
-     class C
- {
-     public:
-     int mode;
-     /*
-     function:4
-     number:1
-     charNumber:3
-     operator:2
-     */
-     double number;
-     int x;
-     QChar chars;
-     bool isTrue;
- };
     //-----------------------------------------------
     QVector<QString> className;
     QVector<QString> commands;
@@ -48,10 +35,9 @@ private:
     int virtualPosition;
     //----------------------------------------------
     QString text;
-    int position;
+
     QString virtualName;
     //----------------------------------------------------Number
-        vector<C> saves;
         bool isNumberExit();
         QString getName();
         bool save();

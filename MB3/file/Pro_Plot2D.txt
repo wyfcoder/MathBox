@@ -1,0 +1,66 @@
+Pro_Plot2D过程说明文档
+
+
+1.原型
+
+ Pro_Plot2D(Function f ,Number Expression ,Number Expression);
+
+ Pro_Plot2D(Function f);
+
+ Pro_Plot2D();
+
+
+2.说明
+
+    该函数用于绘制一定区间的二维图像，其中第三个原型是缺省调能调出绘图窗口或者清空绘图区，第二个函数的参数是一个Function变量，缺省了函数区间在绘图时会自行绘制(-10,10)区间上的函数图像。第一个原型的第一个参数是Function变量，第二个参数是绘制区间的最小值其表示为一个Number类的表达式，第三个参数绘制区间的最大值也是表示为Number 类的表达式。其中需要注意的是Function 变量的自变量个数只有一个。而且多次的调用该指令所有的曲线公用一个画布，并且当输入的Function变量名字相同时优先覆盖原来的那条曲线绘制最新指令的曲线。
+
+
+3.
+
+#示例
+
+ Function f(x)=x+Cos(x+Sin(x*1.31331))+1.32*Pow(x,Sin(x+Cos(x)));
+
+ Function f2(x)=Sin(x)+Cos(x+Sin(x+Cos(x+1.321*Pow(x,2))));
+
+ Number a=0;
+
+ Number b=50;
+
+ Pro_Plot2D(f,a,b);
+
+ Pro_Plot2D(f2,a,b);
+
+ Pro_Plot2D();
+
+
+#输出
+
+ >>New Function 
+
+ @ f=x+Cos(x+Sin(x*1.31331))+1.32*Pow(x,Sin(x+Cos(x)))
+
+ >>New Function 
+
+ @ f2=Sin(x)+Cos(x+Sin(x+Cos(x+1.321*Pow(x,2))))
+
+ >>New Number 
+
+ @ a=0
+
+ >>New Number 
+
+ @ b=50
+ 
+ >>Open a new canvas.
+
+ >>draw a new graph.
+
+ >>draw a new graph.
+
+ >>Cleare the canvas.
+
+
+
+
+

@@ -48,7 +48,7 @@ QList<double> MainGauss::get()
 	return answerR;
 }
 
-MainGauss::MainGauss(int size=0)
+MainGauss::MainGauss(int size)
 {
 	ifstream in("data.txt");
 	if (!in.is_open())
@@ -115,6 +115,7 @@ MainGauss::MainGauss(int size=0)
 		n[answer[l]] = a[l][size];
 	}
 }
+
 MainGauss::~MainGauss()
 {
 	delete[]answer;
@@ -127,6 +128,7 @@ MainGauss::~MainGauss()
 MainGauss::MainGauss()
 {
     ifstream in("data.txt");
+    this->isTrue=true;
     if (!in.is_open())
     {
         exit(0);
@@ -186,5 +188,71 @@ MainGauss::MainGauss()
     for (int l = 0; l < size; l++)
     {
         n[answer[l]] = a[l][size];
+    }
+}
+
+
+//------------------------------------------------------------
+MainGauss::MainGauss(Matrix m)
+{
+    size=m.m;
+    this->answer = new int[size];
+    this->a = new double*[size];
+    this->n = new double[size];
+    this->isTrue=true;
+    for (int i = 0; i < size; i++)
+    {
+        a[i] = new double[size + 1];
+        answer[i] = i;
+    }
+    for (int i = 0; i < size; i++)
+        for (int j = 0; j < size + 1; j++)
+           a[i][j]= m.arrays[i][j];
+    for (int i = 0; i < size - 1; i++)
+    {
+        change(i);
+        for (int k = i + 1; k < size; k++)
+        {
+            double rat;
+            if(fabs(a[i][i])>0.00000000001)
+             rat= a[k][i] / a[i][i];
+            else
+            {
+                isTrue=false;
+                return;
+            }
+            for (int m = i; m < size + 1; m++)
+            {
+                a[k][m] -= rat*a[i][m];
+            }
+        }
+    }
+
+    for (int i = size - 1; i >= 0; i--)
+    {
+        double rat2 = a[i][i];
+        for (int k = i; k < size + 1; k++)
+        {
+            if(fabs(rat2)>0.00000000001)
+            a[i][k] /= rat2;
+            else
+            {
+                isTrue=false;
+                return;
+            }
+        }
+        for (int m = i + 1; m < size; m++)
+        {
+            double rat = a[i][m];
+            for (int q = m; q < size + 1; q++)
+            {
+                a[i][q] -= rat*a[m][q];
+            }
+        }
+    }
+    new_matrix.setMN(size,1);
+    for (int l = 0; l < size; l++)
+    {
+        new_matrix.arrays[answer[l]][0] = a[l][size];
     }
 }

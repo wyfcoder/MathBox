@@ -1,0 +1,68 @@
+Result 说明文档
+
+
+1.Result 变量是一个用于保存用户没有保存结果的变量。
+
+    它可以是Number类，Function类，Matrix类等等。关于它的操作是有限的，不能用表达式显示的给它赋值，只能对他采用引用的方式。
+
+
+2.相关操作
+
+1.引用。
+
+原型：
+	Result;
+
+
+#示例
+
+ Number a=10;
+
+ a+a+a;
+
+ Result;
+
+
+#运行结果
+
+ >>New Number 
+
+ @ a=10
+
+ >>The result is 30
+
+ >>The class of Result is Number.
+
+ >>The value of it is 30
+
+
+2.为同类变量赋值。
+
+原型：
+	Result->calssName;
+
+#示例
+
+ Function f(x,y)=x;
+
+ Pro_RandFunction();
+
+ Result->f;
+
+
+#运行结果：
+
+ >>New Function 
+
+ @ f=x
+
+ >>The result is +x0+x1+x0+x2*x1*x2+x0/x1-x0-967.723*x1/351.953-79.4524-313.187*982.51-x1*x2-x1/x1/875.427/x0/x1-549.494-x1+x1-x1/x0/x2+488.048+677.968/990.612*380.245-x2+x1/x1+578.043/x2-16.6989+x0-900.243-x1*x0/x1
+
+ >>Rewrite Function 
+
+ @ f=+x0+x1+x0+x2*x1*x2+x0/x1-x0-967.723*x1/351.953-79.4524-313.187*982.51-x1*x2-x1/x1/875.427/x0/x1-549.494-x1+x1-x1/x0/x2+488.048+677.968/990.612*380.245-x2+x1/x1+578.043/x2-16.6989+x0-900.243-x1*x0/x1
+
+
+
+
+

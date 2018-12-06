@@ -1,0 +1,43 @@
+Pro_LinearEquationsSolving_MainGuass说明文档
+
+    这个过程用于精确求解线性方程组，采用的是全选主元的高斯消元法，在低维度的线性方程求解方面有一定的优势。
+
+它的原型如下：
+
+ Pro_LinearEquationsSolving_MainGuass(Matrix m),
+
+ Pro_LinearEquationsSolving_MainGuass(Matrix m,Matrix save)
+
+    第一个参数是待求方程组的增广矩阵，即使把待求方程的信息写入一个Matrix里边。第二个参数可以用于保存结果。
+
+
+#示例
+
+ Matrix m(2,3)=[1,2,3;4,3,10];
+
+ Pro_LinearEquationsSolving_MainGuass (m);
+
+ Pro_LinearEquationsSolving_MainGuass (m,m);
+
+
+#输出
+
+ >>New Matrix.
+
+ >> m=
+
+	1.000 2.000 3.000 
+	4.000 3.000 10.000 
+
+ >> Result=
+
+	2.200 
+	0.400
+
+ >>Rewrite Matrix.
+
+ >> m=
+
+	2.200 
+	0.400
+

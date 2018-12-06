@@ -1,0 +1,48 @@
+Pro_Regression_PlecrveRegression说明文档
+
+    当你的数据需要按照多项式进行回归时，就可以使用该过程，她可以使你的数据回归成a+b1*x+b2*Pow(x,2)+b3*Pow(x,3)+…+bn*Pow(x,n)的形式。
+
+该过程的使用原型如下：
+
+ Pro_Regression_PlecrveRegression(Number times,Matrix data)
+
+ Pro_Regression_PlecrveRegression(Number times,Matrix data,Function save)
+
+    第一个参数代表回归的多项式的项数，第二个是你的数据，存的格式是用矩阵存储，且矩阵的列数为2，即数据是一对一对的存储，第三个参数是用来保存结果的Function变量。要注意的是存储的数据对的个数至少大于第一个参数加一。
+
+
+#示例
+
+ Matrix data(3,2)=[1,3;4,6;7,11];
+
+ Function f(x)=x;
+
+ Pro_Regression_PlecrveRegression(2,data);
+
+ Pro_Regression_PlecrveRegression(2,data,f);
+
+
+#输出
+
+ >>New Matrix.
+
+ >> data=
+
+	1.000 3.000 
+	4.000 6.000 
+	7.000 11.000 
+
+ >>New Function.
+
+ >> f=x
+
+ >> Result=1.333333+1.333333*x
+
+ >>Rewrite Function.
+
+ >> f=1.333333+1.333333*x
+
+
+
+
+

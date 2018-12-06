@@ -1,0 +1,40 @@
+Pro_OutputMatrix过程说明
+
+
+1.原型
+
+ Pro_OutputMatrix(Matrix m)
+
+
+2.说明：
+
+    该指令可以将已存在的矩阵变量储存到用户指定的文件里，把文件的内容覆盖。在存储过程中会跳出一个文件选择框，选择你指定的文件即可。
+
+
+#示例
+
+ Matrix m(2,2)=[1,2;3,4];
+
+ Pro_OutputMatrix(m);
+
+
+#输出
+
+ Matrix m(2,2)=[1,2;3,4];
+
+ >>New Matrix 
+
+ @ m=
+
+	1.000000 2.000000 
+	3.000000 4.000000 
+
+ Pro_OutputMatrix(m);
+
+ >>The data is saved.
+
+ 
+
+
+
+

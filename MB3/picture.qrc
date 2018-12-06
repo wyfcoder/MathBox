@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/">
+        <file>picture/back.png</file>
+        <file>picture/circle.png</file>
+        <file>picture/delete.png</file>
+        <file>picture/delete2.png</file>
+        <file>picture/file.png</file>
+        <file>picture/forward.png</file>
+        <file>picture/main.png</file>
+        <file>picture/new.png</file>
+        <file>picture/open.png</file>
+        <file>picture/paint.png</file>
+        <file>picture/save.png</file>
+        <file>picture/plot.png</file>
+        <file>picture/time.png</file>
+        <file>picture/mathbox.png</file>
+        <file>picture/mathbox1.png</file>
+    </qresource>
+</RCC>

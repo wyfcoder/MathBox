@@ -6,6 +6,7 @@
 #include"matrix.h"
 #include<QTableWidget>
 #include"number.h"
+#include"function.h"
 using namespace std;
 class ClassExplor : public QWidget
 {
@@ -14,7 +15,12 @@ public:
     explicit ClassExplor(QWidget *parent = nullptr);
     void Change(vector<Matrix> matrixes);
     void addNumberTableItem(Number n);
+    void addFunctiontableItem(Function f);
+    void addMatrixtableItem(Matrix m);
     void changeTableItem(Number n);
+    void changeTableItem(Function f);
+    void changeTableItem(Matrix m);
+    void delet(QString name);
     class classes
     {
     public:
@@ -28,8 +34,6 @@ private:
     vector<classes> all_virtual;
 
     QTableWidget* table;
-    void addMatrixTableItem(Matrix m);
-    void changeTableItem(Matrix m,int position);
     int changPosition;
 };
 

@@ -1,0 +1,43 @@
+Pro_IntegrationSolving_StepSimpson过程说明
+
+
+原型：
+
+ Pro_IntegrationSolving_StepSimpson(Function f,Number start,Number end);
+
+ Pro_IntegrationSolving_StepSimpson(Function f,Number start,Number end,Number save);
+
+
+说明：
+
+    该过程是一个用于求数值积分的过程算法。采用变步长辛普森算法原理。第一个参数Function是一个只有一个自变量的Function变量；第二个参数是一个Number类的表达式，表示积分下限；第三个参量也是一个Number类的表达式，表示积分上限；第四个变量是可以缺省的Number变量，用于保存积分结果。
+
+
+#示例：
+
+ Function f(x)=Cos(x+Sin(x))+Sin(x+Cos(x));
+
+ Number a=20;
+
+ Pro_IntegrationSolving_Simpson(f,-10,10+a,a);
+
+
+#输出：
+
+ >>New Function 
+
+ @ f=Cos(x+Sin(x))+Sin(x+Cos(x))
+
+ >>New Number 
+
+ @ a=20
+
+ >>Solve the integration, the answer is -1.9945673336190102
+
+ >>Rewrite Number 
+
+ @ a=-1.99457
+
+
+
+

@@ -1,0 +1,35 @@
+Pro_Eraser 过程说明
+
+
+1.原型
+
+ Pro_Eraser(Virtual virtual);
+
+
+2.说明
+
+  该指令可以对已存在的变量进行擦除，即可以把该变量删除。
+
+
+#示例
+
+ Function f(x)=x+Sin(x);
+
+ Pro_Eraser(f);
+
+
+#输出
+
+ Function f(x)=x+Sin(x);
+
+ >>New Function 
+
+ @ f=x+Sin(x)
+
+ Pro_Eraser(f);
+
+ >>Eraser f
+
+
+
+

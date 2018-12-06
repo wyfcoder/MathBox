@@ -1,0 +1,68 @@
+Pro_MatrixtoDownTriangel过程说明
+
+
+1.原型：
+
+ Pro_MatrixtoDownTriangel(Matrix m);
+
+ Pro_MatrixtoDownTriangel(Matrix m,Matrix save);
+
+
+2.说明：
+
+    该过程是用于矩阵变换，可以将一个矩阵变成下三角矩阵，第一个变量是待变换矩阵，第二个变量用于保存结果的矩阵，如果没有第二个变量则将结果保存在Result里。
+
+
+#示例
+
+ Matrix a(3,3)=[1,2,3;4,5,6;7,8,9];
+
+ Matrix save(1,1);
+
+ Pro_MatrixtoDownTriangel(a);
+
+ Pro_MatrixtoDownTriangel((a,save);
+
+
+#输出
+
+ Matrix a(3,3)=[1,2,3;4,5,6;7,8,9];
+
+ >>New Matrix 
+
+ @ a=
+
+	1.000000 2.000000 3.000000 
+	4.000000 5.000000 6.000000 
+	7.000000 8.000000 9.000000 
+
+ Matrix save(1,1);
+
+ >>New Matrix 
+
+ @ save=
+
+	0.000000 
+
+ Pro_MatrixtoDownTriangel(a);
+
+ @ Result=
+
+	0.000000 0.000000 0.000000 
+	-0.666667 -1.333333 0.000000 
+	8.000000 7.000000 9.000000 
+
+ Pro_MatrixtoDownTriangel(a,save);
+
+ >>Rewrite Matrix
+
+ @ save=
+
+	0.000000 0.000000 0.000000 
+	-0.666667 -1.333333 0.000000 
+	8.000000 7.000000 9.000000 
+
+
+
+
+

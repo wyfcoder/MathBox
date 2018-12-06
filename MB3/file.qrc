@@ -1,0 +1,37 @@
+<RCC>
+    <qresource prefix="/">
+        <file>file/Function.txt</file>
+        <file>file/Matrix.txt</file>
+        <file>file/Number.txt</file>
+        <file>file/Pro_Clear.txt</file>
+        <file>file/Pro_EquationSolving.txt</file>
+        <file>file/Pro_Eraser.txt</file>
+        <file>file/Pro_InputMatrix.txt</file>
+        <file>file/Pro_IntegrationSolving_GuassFivePoint.txt</file>
+        <file>file/Pro_IntegrationSolving_Romberg.txt</file>
+        <file>file/Pro_IntegrationSolving_Simpson.txt</file>
+        <file>file/Pro_IntegrationSolving_StepSimpson.txt</file>
+        <file>file/Pro_LinearDiagonalEquationsSolving.txt</file>
+        <file>file/Pro_LinearEquationsSolving.txt</file>
+        <file>file/Pro_LinearEquationsSolving_Iteration.txt</file>
+        <file>file/Pro_MatrixDet.txt</file>
+        <file>file/Pro_MatrixPow.txt</file>
+        <file>file/Pro_MatrixtoDownTriangel.txt</file>
+        <file>file/Pro_MatrixtoLadder.txt</file>
+        <file>file/Pro_MatrixtoUpTriangle.txt</file>
+        <file>file/Pro_MatrixTrace.txt</file>
+        <file>file/Pro_MatrixTransform.txt</file>
+        <file>file/Pro_OutputMatrix.txt</file>
+        <file>file/Pro_Plot2D.txt</file>
+        <file>file/Pro_Rand.txt</file>
+        <file>file/Pro_RandFunction.txt</file>
+        <file>file/Pro_RandMatrix.txt</file>
+        <file>file/Pro_Regression_MultipleVirtualsRegression.txt</file>
+        <file>file/Pro_Regression_PlecrveRegression.txt</file>
+        <file>file/Pro_Regression_UnifiedRegression.txt</file>
+        <file>file/Pro_SetDigit.txt</file>
+        <file>file/Result.txt</file>
+        <file>file/Pro_LinearEquationsSolving_MainGuass.txt</file>
+        <file>file/MathBox_Plot.txt</file>
+    </qresource>
+</RCC>

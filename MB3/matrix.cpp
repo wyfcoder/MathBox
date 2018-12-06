@@ -7,15 +7,15 @@
 #include<fstream>
 #include<algorithm>
 using namespace std;
-Matrix::Matrix(int a,int b)
+Matrix::Matrix(unsigned a, unsigned b)
 {
     m=a;
     n=b;
-    for(int i=0;i<a;i++)
+    for(unsigned i=0;i<a;i++)
     {
         vector<double> s;
         arrays.push_back(s);
-        for(int k=0;k<b;k++)
+        for(unsigned k=0;k<b;k++)
         arrays[i].push_back(0);
     }
 }
@@ -24,74 +24,61 @@ void Matrix::zeroMatrix()
 {
     if(arrays.size()!=0)
       arrays.clear();
-    for(int i=0;i<m;i++)
+    for(unsigned i=0;i<m;i++)
     {
         vector<double> s;
         arrays.push_back(s);
-        for(int k=0;k<n;k++)
+        for(unsigned k=0;k<n;k++)
         arrays[i].push_back(0);
     }
 }
-Matrix::Matrix(int a)
+
+Matrix::Matrix(unsigned a)
 {
     n=a;
 }
 Matrix::Matrix()
 {
-    ifstream in("Matrix.txt");
-    if (!in.is_open())
-    {
-        exit(0);
-    }
-    in>>m;
-    in>>n;
-    for(int i=0;i<m;i++)
-    {
-        vector<double> s;
-        arrays.push_back(s);
-        for(int k=0;k<n;k++)
-        {
-            double m;
-            in>>m;
-            arrays[i].push_back(m);
-        }
-    }
+    m=1;
+    n=1;
 }
+
+
 Matrix operator +(Matrix a,Matrix b)
 {
-       for(int i=0;i<a.m;i++)
-         for(int k=0;k<a.n;k++)
+       for(unsigned i=0;i<a.m;i++)
+         for(unsigned k=0;k<a.n;k++)
              a.arrays[i][k]+=b.arrays[i][k];
        return a;
 }
 Matrix operator -(Matrix a,Matrix b)
 {
-    for(int i=0;i<a.m;i++)
-      for(int k=0;k<a.n;k++)
+    for(unsigned i=0;i<a.m;i++)
+      for(unsigned k=0;k<a.n;k++)
           a.arrays[i][k]-=b.arrays[i][k];
     return a;
 }
 
 Matrix operator *(Matrix a,double b)
 {
-    for(int i=0;i<a.m;i++)
-      for(int k=0;k<a.n;k++)
+    for(unsigned i=0;i<a.m;i++)
+      for(unsigned k=0;k<a.n;k++)
           a.arrays[i][k]*=b;
     return a;
 }
 
 Matrix operator *(double b,Matrix a)
 {
-    for(int i=0;i<a.m;i++)
-      for(int k=0;k<a.n;k++)
+    for(unsigned i=0;i<a.m;i++)
+      for(unsigned k=0;k<a.n;k++)
           a.arrays[i][k]*=b;
     return a;
 }
 
 Matrix operator /(Matrix a,double b)
 {
-    for(int i=0;i<a.m;i++)
-      for(int k=0;k<a.n;k++)
+    for(unsigned i=0;i<a.m;i++)
+      for(unsigned k=0;k<a.n;k++)
           a.arrays[i][k]/=b;
     return a;
 }
@@ -99,12 +86,12 @@ Matrix operator /(Matrix a,double b)
 Matrix operator *(Matrix a,Matrix b)
 {
     Matrix c(a.m,b.n);
-    for(int i=0;i<c.m;i++)
+    for(unsigned i=0;i<c.m;i++)
     {
-        for(int j=0;j<c.n;j++)
+        for(unsigned j=0;j<c.n;j++)
         {
             double pluss=0;
-            for(int m=0;m<a.n;m++)
+            for(unsigned m=0;m<a.n;m++)
             pluss+=a.arrays[i][m]*b.arrays[m][j];
             c.arrays[i][j]=pluss;
         }
@@ -118,22 +105,22 @@ void Matrix::operator =(Matrix c)
     this->n=c.n;
     if(arrays.size()==0)
     {
-        for(int i=0;i<m;i++)
+        for(unsigned i=0;i<m;i++)
         {
             vector<double> s;
             arrays.push_back(s);
-            for(int k=0;k<n;k++)
+            for(unsigned k=0;k<n;k++)
             arrays[i].push_back(c.arrays[i][k]);
         }
     }
     else
     {
         arrays.clear();
-        for(int i=0;i<m;i++)
+        for(unsigned i=0;i<m;i++)
         {
             vector<double> s;
             arrays.push_back(s);
-            for(int k=0;k<n;k++)
+            for(unsigned k=0;k<n;k++)
             arrays[i].push_back(c.arrays[i][k]);
         }
     }
@@ -147,9 +134,9 @@ bool Matrix::operator ==(Matrix c)
         return false;
     if(QString::compare(this->name,c.name)!=0)
         return false;
-    for(int i=0;i<m;i++)
-        for(int j=0;j<n;j++)
-            if(arrays[i][j]!=c.arrays[i][j])
+    for(unsigned i=0;i<m;i++)
+        for(unsigned j=0;j<n;j++)
+            if(fabs(arrays[i][j]-c.arrays[i][j])>0.0000001)
                 return false;
     return true;
 }
@@ -157,30 +144,30 @@ bool Matrix::operator ==(Matrix c)
 Matrix Matrix::T()
 {
     Matrix c(n,m);
-    for(int i=0;i<m;i++)
-        for(int j=0;j<n;j++)
+    for(unsigned i=0;i<m;i++)
+        for(unsigned j=0;j<n;j++)
             c.arrays[j][i]=arrays[i][j];
     return c;
 }
 
-Matrix Matrix::pow(int times)
+Matrix Matrix::pow(unsigned times)
 {
     Matrix d(m,m);
     Matrix p(m,m);
     if(times==0)
     {
-        for(int i=0;i<m;i++)
-            for(int j=0;j<m;j++)
+        for(unsigned i=0;i<m;i++)
+            for(unsigned j=0;j<m;j++)
                 p.arrays[i][j]=1;
         return p;
     }
-    for(int i=0;i<m;i++)
-        for(int j=0;j<m;j++)
+    for(unsigned i=0;i<m;i++)
+        for(unsigned j=0;j<m;j++)
         {
             d.arrays[i][j]=arrays[i][j];
             p.arrays[i][j]=arrays[i][j];
         }
-    for(int i=1;i<times;i++)
+    for(unsigned i=1;i<times;i++)
     {
         p=p*d;
     }
@@ -189,8 +176,8 @@ Matrix Matrix::pow(int times)
 
 double Matrix::traceOfMatrix()
 {
-        int sum=0;
-        for(int i=0;i<m;i++)
+        double sum=0;
+        for(unsigned i=0;i<m;i++)
             sum+=arrays[i][i];
         return sum;
 }
@@ -199,25 +186,25 @@ Matrix Matrix::ladder()
 {
     Matrix c(m,n);
     c.times=0;
-    for(int j=0;j<m;j++)
+    for(unsigned j=0;j<m;j++)
        {
-          for(int i=0;i<n;i++)
+          for(unsigned i=0;i<n;i++)
           c.arrays[j][i]=arrays[j][i];
     }
-    int c1;
+    unsigned c1;
     if(m>n)
         c1=n;
     else
         c1=m;
-    for(int k=0;k<c1;k++)
+    for(unsigned k=0;k<c1;k++)
     {
         if(k!=n-1)
        {
-          int maxM=k;
-          int maxN=k;
-          for(int j=k;j<m;j++)
+          unsigned maxM=k;
+          unsigned maxN=k;
+          for(unsigned j=k;j<m;j++)
         {
-          for(int i=k;i<n;i++)
+          for(unsigned i=k;i<n;i++)
           {
               if(fabs(c.arrays[j][i])>fabs(c.arrays[maxM][maxN]))
               {
@@ -233,7 +220,7 @@ Matrix Matrix::ladder()
             if(maxM!=k)
             {
                 c.times++;
-            for(int i=0;i<n;i++)
+            for(unsigned i=0;i<n;i++)
             {
                 m1=c.arrays[k][i];
                 c.arrays[k][i]=c.arrays[maxM][i];
@@ -243,7 +230,7 @@ Matrix Matrix::ladder()
             if(maxN!=k)
             {
                 c.times++;
-                for(int i=0;i<m;i++)
+                for(unsigned i=0;i<m;i++)
                 {
                     m1=c.arrays[i][k];
                     c.arrays[i][k]=c.arrays[i][maxN];
@@ -251,11 +238,11 @@ Matrix Matrix::ladder()
                 }
             }
         }
-        if(c.arrays[k][k]!=0)
-        for(int i=k+1;i<m;i++)
+        if(fabs(c.arrays[k][k])>0.00000001)
+        for(unsigned i=k+1;i<m;i++)
         {
             double rat=-c.arrays[i][k]/c.arrays[k][k];
-            for(int j=0;j<n;j++)
+            for(unsigned j=0;j<n;j++)
             {
                c.arrays[i][j]+=c.arrays[k][j]*rat;
             }
@@ -273,9 +260,9 @@ Matrix Matrix::downTriangle()
 {
     Matrix c(n,n);
     c.times=0;
-    for(int j=0;j<n;j++)
+    for(unsigned j=0;j<n;j++)
        {
-          for(int i=0;i<n;i++)
+          for(unsigned i=0;i<n;i++)
           c.arrays[j][i]=arrays[j][i];
     }
     for(int k=n-1;k>=0;k--)
@@ -302,7 +289,7 @@ Matrix Matrix::downTriangle()
             if(maxM!=k)
             {
                 c.times++;
-            for(int i=0;i<n;i++)
+            for(unsigned i=0;i<n;i++)
             {
                 m1=c.arrays[k][i];
                 c.arrays[k][i]=c.arrays[maxM][i];
@@ -312,7 +299,7 @@ Matrix Matrix::downTriangle()
             if(maxN!=k)
             {
                 c.times++;
-                for(int i=0;i<n;i++)
+                for(unsigned i=0;i<n;i++)
                 {
                     m1=c.arrays[i][k];
                     c.arrays[i][k]=c.arrays[i][maxN];
@@ -325,7 +312,7 @@ Matrix Matrix::downTriangle()
         for(int i=k-1;i>=0;i--)
         {
             double rat=-c.arrays[i][k]/c.arrays[k][k];
-            for(int j=0;j<n;j++)
+            for(unsigned j=0;j<n;j++)
             {
                c.arrays[i][j]+=c.arrays[k][j]*rat;
             }
@@ -349,7 +336,7 @@ double Matrix::det()
 {
     Matrix a=upTriangle();
     double m=1;
-    for(int i=0;i<n;i++)
+    for(unsigned i=0;i<n;i++)
         m*=a.arrays[i][i];
     if(a.times%2!=0)
     {
@@ -358,17 +345,17 @@ double Matrix::det()
     return m;
 }
 
-int Matrix::rankOfMatrix()
+unsigned Matrix::rankOfMatrix()
 {
     Matrix a=ladder();
-    int a1=0;
-    int n2;
+    unsigned a1=0;
+    unsigned n2;
     if(n>m)
         n2=m;
     else
         n2=n;
 
-    for(int i=0;i<n2;i++)
+    for(unsigned i=0;i<n2;i++)
         if(fabs(a.arrays[i][i])>=0.0000000001)
             a1++;
     return a1;
@@ -378,11 +365,11 @@ Matrix Matrix::inversofMatrix()
 {
     vector<vector<double>> matrixs;
     matrixs.resize(n);
-    for(int i=0;i<n;i++)
+    for(unsigned i=0;i<n;i++)
         matrixs[i].resize(2*n);
-    for(int i=0;i<n;i++)
+    for(unsigned i=0;i<n;i++)
     {
-        for(int k=0;k<2*n;k++)
+        for(unsigned k=0;k<2*n;k++)
         {
             if(k<n)
                 matrixs[i][k]=arrays[i][k];
@@ -395,10 +382,10 @@ Matrix Matrix::inversofMatrix()
             }
         }
     }
-    for(int i=0;i<n;i++)
+    for(unsigned i=0;i<n;i++)
     {
-        int maxM=i;
-        for(int k=i;k<n;k++)
+        unsigned maxM=i;
+        for(unsigned k=i;k<n;k++)
                 if(matrixs[k][i]>matrixs[maxM][i])
                     maxM=k;
 
@@ -407,7 +394,7 @@ Matrix Matrix::inversofMatrix()
             double cen;
             if(maxM!=i)
             {
-                for(int k=0;k<2*n;k++)
+                for(unsigned k=0;k<2*n;k++)
                 {
                     cen=matrixs[i][k];
                     matrixs[i][k]=matrixs[maxM][k];
@@ -416,17 +403,17 @@ Matrix Matrix::inversofMatrix()
             }
         }
         double rat=matrixs[i][i];
-        for(int k=i;k<2*n;k++)
+        for(unsigned k=i;k<2*n;k++)
         {
             matrixs[i][k]/=rat;
         }
 
         if(i<n-1)
         {
-            for(int j=i+1;j<n;j++)
+            for(unsigned j=i+1;j<n;j++)
             {
                 double rat=-matrixs[j][i];
-                for(int k=i;k<2*n;k++)
+                for(unsigned k=i;k<2*n;k++)
                 {
                       matrixs[j][k]+=rat*matrixs[i][k];
                 }
@@ -442,25 +429,37 @@ Matrix Matrix::inversofMatrix()
             for(int j=n-1;j!=i;j--)
             {
                 double rat=-matrixs[i][j]/matrixs[j][j];
-                for(int m=0;m<2*n;m++)
+                for(unsigned m=0;m<2*n;m++)
                     matrixs[i][m]+=rat*matrixs[j][m];
             }
         }
     }
     Matrix c(n,n);
-    for(int i=0;i<n;i++)
-        for(int j=0;j<n;j++)
+    for(unsigned i=0;i<n;i++)
+        for(unsigned j=0;j<n;j++)
             c.arrays[i][j]=matrixs[i][j+n];
     return c;
 }
 
-Matrix Matrix::IMatrix(int n)
+Matrix Matrix::IMatrix(unsigned n)
 {
     Matrix i(n,n);
-    for(int j=0;j<n;j++)
+    for(unsigned j=0;j<n;j++)
         i.arrays[j][j]=1;
     return i;
 }
 
-
+void Matrix::setMN(unsigned a,unsigned b)
+{
+    this->m=a;
+    this->n=b;
+    if(arrays.size()!=0) arrays.clear();
+    for(unsigned i=0;i<a;i++)
+    {
+        vector<double> s;
+        arrays.push_back(s);
+        for(unsigned k=0;k<b;k++)
+        arrays[i].push_back(0);
+    }
+}
 

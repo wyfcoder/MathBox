@@ -1,0 +1,64 @@
+Pro_LinearEquationSolving 过程说明
+
+
+1.原型：
+
+ Pro_LinearEquationsSolving(Matrix m);
+
+ Pro_LinearEquationsSolving(Matrix m,Matrix save);
+
+
+2.说明：
+
+    该过程用于求解线性方程组。第一个矩阵变量表示线性方程组的增广矩阵，第二个矩阵变量则用于存储答案。如果没有第二个变量，则将结果存储在Result变量里面。
+
+
+#示例
+
+ Matrix m(2,3)=[1,2,3;4,5,6];
+
+ Matrix save(1,1);
+
+ Pro_LinearEquationsSolving(m);
+
+ Pro_LinearEquationsSolving(m,save);
+
+
+#输出
+
+ Matrix m(2,3)=[1,2,3;4,5,6];
+
+ >>New Matrix 
+
+ @ m=
+
+	1.000000 2.000000 3.000000 
+	4.000000 5.000000 6.000000 
+
+ Matrix save(1,1);
+
+ >>New Matrix 
+
+ @ save=
+
+	0.000000 
+
+ Pro_LinearEquationsSolving(m);
+
+ @ Result=
+
+	-1.000000 
+	2.000000 
+
+ Pro_LinearEquationsSolving(m,save);
+
+ >>Rewrite Matrix
+
+ @ save=
+
+	-1.000000 
+	2.000000 
+
+
+
+

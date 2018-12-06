@@ -1,0 +1,41 @@
+Pro_InputMatrix过程说明
+
+
+1.原型
+
+  Pro_InputMatrix(Matrix m,Number transverse)
+
+2.说明：
+
+    该指令可以将文件里的数据保存到已存在的矩阵当中，把矩阵的内容覆盖。在存储过程中会跳出一个文件选择框，选择你指定的文件即可。
+
+
+#示例
+
+ Matrix m(2,2)=[1,2;3,4];
+
+ Pro_InputMatrix(m);
+
+
+#输出
+
+ Matrix m(2,2)=[1,2;3,4];
+
+ >>New Matrix 
+
+ @ m=
+
+	1.000000 2.000000 
+	3.000000 4.000000 
+
+ Pro_InputMatrix(m,2);
+
+ Data inputs successful.
+
+ >>Rewrite Matrix
+
+ @ m=
+
+	0.088219 0.911536 
+	0.315837 0.208312 
+

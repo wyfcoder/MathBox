@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>picture/file.png</file>
+        <file>picture/circle.png</file>
+        <file>file/numberDocument.txt</file>
+        <file>picture/plot.jpg</file>
+        <file>file/plotWindowDocument.txt</file>
+        <file>picture/Welcome.png</file>
+    </qresource>
+</RCC>

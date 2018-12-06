@@ -1,0 +1,93 @@
+Number 类说明文档
+
+
+简介：
+
+    该类是MathBox中的基础类，代表实数的数据结构。声明Number类的变量后就可以使用实数的运算规律来作用变量。
+
+
+基本用法：
+
+1.赋值运算。
+
+#示例：
+
+ Number a=10;
+
+ Number b=10+a+Sin(a+1.23*a);
+
+ Number c=a+b+Exp(a+b);
+
+ a=Sin(a+b+c)+Pow(1.31,a);
+
+
+#输出：
+
+ >>New Number 
+
+ @ a=10
+
+ >>New Number 
+
+ @ b=19.696
+
+ >>New Number 
+
+ @ c=7.88541e+12
+
+ >>Rewrite Number 
+
+ @ a=14.2466
+
+
+2.表达式运算。
+
+    直接输入算数表达式后就能直接求出值并保存在Result当中。
+
+#示例：
+
+ Number a=10+12.2+Cos(11+12);
+
+ Number b=a+1.321;
+
+ a+b+Cos(a);
+
+ a*b+Sin(a+b)*Cos(a*b)+Tan(a+b);
+
+#输出
+
+ >>New Number 
+
+ @ a=21.6672
+
+ >>New Number 
+
+ @ b=22.9882
+
+ >>The result is 498.839
+
+
+3.该类可用在任何需要实数表达式和待保存结果的过程中。
+
+    例如该算法Pro_Rand函数是产生0~1范围内的随机数过程,可以接受一个实数变量的参数来保存随机值。
+
+#示例
+
+ Number a=10;
+
+ Pro_Rand(a); 
+
+#输出
+
+ >>New Number 
+
+ @ a=10
+
+ >>Rewrite Number 
+
+ @ a=0.65397
+
+
+
+
+

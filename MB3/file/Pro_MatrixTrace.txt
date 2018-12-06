@@ -1,0 +1,48 @@
+Pro_MatrixTrace过程说明
+
+
+1.原型：
+
+ Pro_MatrixTrace(Martrix m);
+
+ Pro_MatrixTrace(Matrix n,Number save);
+
+2.说明：
+
+    该过程用于矩阵的求迹运算。第一个过程有一个矩阵变量，用于表示求迹的对象，并把结果保存在Result里。第二个过程较第一多了一个Number变量用于保存求迹的结果。
+
+
+#示例：
+
+ Matrix a(3,3)=[1,2,3;4,5,6;7,8,9];
+
+ Number save=1;
+
+ Pro_MatrixTrace(a);
+
+ Pro_MatrixTrace(a,save);
+
+
+#结果：
+
+ >>New Matrix 
+
+ @ a=
+
+	1.000000 2.000000 3.000000 
+	4.000000 5.000000 6.000000 
+	7.000000 8.000000 9.000000
+
+ >>New Number 
+
+ @ save=1
+
+ @ Result=15
+
+ >>Rewrite Number 
+
+ @ save=15
+
+
+
+

@@ -1,0 +1,89 @@
+Pro_Regression_UnifiedRegression说明文档
+
+    Pro_Regression_UnifiedRegression过程用于数值回归，该算法集成了几种常用的回归模型。
+
+该函数的原型有
+
+ Pro_Regression_UnifiedRegression(Number ID,Matrix data)，
+
+ Pro_Regression_UnifiedRegression(Number ID,Matrix data,Function save)。
+
+    第一个参数是回归模型的编号，第二个参数是一个Matrix变量，用于存储待回归的数据，但要保证这个矩阵的列数是2，即数据是一对一对的存储。且Matrix的行数要大于等于2，否则不保证有收敛的结果。第三个变量用于保存数值计算的结果，是一个Function变量。
+
+
+对于第一个变量的值与模型对应如下
+
+ Number------Mode
+
+ 1---------- y=a*x+b
+
+ 2---------- y=a*Pow(b,x)
+
+ 3---------- y=a*Exp(b*x)
+
+ 4---------- y=a*Exp(x)+b
+
+ 5---------- y=a*Pow(x,b);
+
+ 6---------- y=a*Ln(x)+b;
+ 
+ 7---------- y=a*Pow(x,0.5)+b
+
+ 8---------- y=a*Pow(x,0.33)+b
+
+ 9---------- y=a/x+b
+
+
+#示例
+
+#Input
+
+ Matrix b(1,1)=[1];
+
+ Pro_RandMatrix(10,2,b);
+
+ Function f(x)=x;
+
+ Pro_Regression_UnifiedRegression(5,b);
+
+ Pro_Regression_UnifiedRegression(1,b,f);
+
+
+#output
+
+ >>New Matrix.
+
+ >> b=
+
+	1.0000000000 
+
+ >>Rewrite Matrix.
+
+ >> b=
+
+	0.5790271745 0.5835485268 
+	0.2070546368 0.0243196300 
+	0.6406362243 0.7142117185 
+	0.0652267290 0.3477062177 
+	0.7497699585 0.1913153232 
+	0.4046313229 0.2263622156 
+	0.5859523479 0.7436000863 
+	0.6013636197 0.8048165509 
+	0.1654154179 0.1233125771 
+	0.6990495946 0.9881465391 
+
+ >>New Function.
+
+ >> f=x
+
+ >> Result=0.618661*Pow(x,0.681549)
+
+ >>Rewrite Function.
+
+ >> f=0.861452*x+0.070013
+
+ 
+
+
+
+

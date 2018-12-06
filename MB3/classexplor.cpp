@@ -1,7 +1,8 @@
 #include "classexplor.h"
 #include<qheaderview.h>
 #include<QVBoxLayout>
-
+#include"function.h"
+using namespace std;
 ClassExplor::ClassExplor(QWidget *parent) : QWidget(parent)
 {
     table=new QTableWidget(1,4);
@@ -16,94 +17,70 @@ ClassExplor::ClassExplor(QWidget *parent) : QWidget(parent)
 }
 
 
-void ClassExplor::addMatrixTableItem(Matrix m)
+
+void  ClassExplor::addFunctiontableItem(Function f)
 {
-     classes one;
-     one.className="Matrix";
-     one.size=m.n*m.m;
-     one.name=m.name;
-     all_virtual.push_back(one);
-     QTableWidgetItem *item0,*item1,*item2,*item3;
-     table->setRowCount(table->rowCount()+1);
-     int row=table->rowCount()-2;
-     item0=new QTableWidgetItem;
-     item1=new QTableWidgetItem;
-     item2=new QTableWidgetItem;
-     item3=new QTableWidgetItem;
-     item0->setText("Matrix");
-     item1->setText(m.name);
-     int size=m.n*m.m;
-     item2->setText(QString::number(size));
-     table->setItem(row,0,item0);
-     table->setItem(row,1,item1);
-     table->setItem(row,2,item2);
-     QString v;
-     int sum=0;
-     v.append("[");
-        for(int i=0;i<m.m;i++)
-      {
-         for(int j=0;j<m.n;j++)
-         {
-             v.append(QString::number(m.arrays[i][j]));
-              if(sum>15)
-              {
-                  v.append("...");
-                  item3->setText(v);
-                  table->setItem(row,3,item3);
-                  return;
-              }
-             v.append(" ");
-             sum++;
-         }
-         if(i!=m.m-1)
-         v.append(";");
-         else
-         v.push_back("]");
-         }
-         item3->setText(v);
-         table->setItem(row,3,item3);
+    classes one;
+    one.className="Function";
+    one.size=1;
+    one.name=f.virtualName;
+    all_virtual.push_back(one);
+    QTableWidgetItem *item0,*item1,*item2,*item3;
+    table->setRowCount(table->rowCount()+1);
+    item0=new QTableWidgetItem;
+    item1=new QTableWidgetItem;
+    item2=new QTableWidgetItem;
+    item3=new QTableWidgetItem;
+    item0->setText("Function");
+    item1->setText(f.virtualName);
+    item2->setText(QString::number(f.function.size()));
+    item3->setText(f.function);
+    int row=table->rowCount()-2;
+    table->setItem(row,0,item0);
+    table->setItem(row,1,item1);
+    table->setItem(row,2,item2);
+    table->setItem(row,3,item3);
 }
 
-void ClassExplor::changeTableItem(Matrix m, int row)
+void ClassExplor::addMatrixtableItem(Matrix m)
 {
+    classes one;
+    one.className="Matrix";
+    one.size=m.m*m.n;
+    one.name=m.name;
+    all_virtual.push_back(one);
     QTableWidgetItem *item0,*item1,*item2,*item3;
+    table->setRowCount(table->rowCount()+1);
     item0=new QTableWidgetItem;
     item1=new QTableWidgetItem;
     item2=new QTableWidgetItem;
     item3=new QTableWidgetItem;
     item0->setText("Matrix");
     item1->setText(m.name);
-    int size=m.n*m.m;
-    item2->setText(QString::number(size));
+    item2->setText(QString::number(m.m*m.n));
+    QString message="[";
+    for(unsigned i=0;i<m.m;i++)
+     {
+        for(unsigned j=0;j<m.n;j++)
+        {
+            message.append(QString::number(m.arrays[i][j]));
+            message.append(" ");
+        }
+
+        if(i!=m.m-1)
+            message.append(";");
+        else
+            message.append("]");
+        if(message.size()>100) break;
+     }
+    item3->setText(message);
+    int row=table->rowCount()-2;
     table->setItem(row,0,item0);
     table->setItem(row,1,item1);
     table->setItem(row,2,item2);
-    QString v;
-    int sum=0;
-    v.append("[");
-        for(int i=0;i<m.m;i++)
-     {
-        for(int j=0;j<m.n;j++)
-        {
-            v.append(QString::number(m.arrays[i][j]));
-             if(sum>15)
-             {
-                 v.append("...");
-                 item3->setText(v);
-                 table->setItem(row,3,item3);
-                 return;
-             }
-            v.append(" ");
-            sum++;
-        }
-        if(i!=m.m-1)
-        v.append(";");
-        else
-        v.append("]");
-        }
-        item3->setText(v);
-        table->setItem(row,3,item3);
+    table->setItem(row,3,item3);
 }
+
 
 void ClassExplor::addNumberTableItem(Number n)
 {
@@ -148,6 +125,80 @@ void ClassExplor::changeTableItem(Number n)
             table->setItem(i,1,item1);
             table->setItem(i,2,item2);
             table->setItem(i,3,item3);
+        }
+    }
+}
+
+void ClassExplor::changeTableItem(Function f)
+{
+    for(unsigned i=0;i<all_virtual.size();i++)
+    {
+        if(f.virtualName==all_virtual[i].name)
+        {
+            QTableWidgetItem *item0,*item1,*item2,*item3;
+            item0=new QTableWidgetItem;
+            item1=new QTableWidgetItem;
+            item2=new QTableWidgetItem;
+            item3=new QTableWidgetItem;
+            item0->setText("Function");
+            item1->setText(f.virtualName);
+            item2->setText(QString::number(f.function.size()));
+            item3->setText(f.function);
+            table->setItem(i,0,item0);
+            table->setItem(i,1,item1);
+            table->setItem(i,2,item2);
+            table->setItem(i,3,item3);
+        }
+    }
+}
+
+void ClassExplor::changeTableItem(Matrix m)
+{
+    for(unsigned i=0;i<all_virtual.size();i++)
+    {
+        if(m.name==all_virtual[i].name)
+        {
+            QTableWidgetItem *item0,*item1,*item2,*item3;
+            item0=new QTableWidgetItem;
+            item1=new QTableWidgetItem;
+            item2=new QTableWidgetItem;
+            item3=new QTableWidgetItem;
+            QString message="[";
+            for(unsigned i=0;i<m.m;i++)
+             {
+                for(unsigned j=0;j<m.n;j++)
+                {
+                    message.append(QString::number(m.arrays[i][j]));
+                    message.append(" ");
+                }
+                if(i!=m.m-1)
+                    message.append(";");
+                else
+                    message.append("]");
+             }
+            item0->setText("Matrix");
+            item1->setText(m.name);
+            item2->setText(QString::number(m.m*m.n));
+            item3->setText(message);
+            table->setItem(i,0,item0);
+            table->setItem(i,1,item1);
+            table->setItem(i,2,item2);
+            table->setItem(i,3,item3);
+        }
+    }
+}
+
+void ClassExplor::delet(QString name)
+{
+    for(unsigned i=0;i<all_virtual.size();i++)
+    {
+        if(name==all_virtual[i].name)
+        {//有待修改
+            table->removeRow(i);
+            vector<classes>::iterator it=all_virtual.begin();
+            for(unsigned a=0;a<i;a++)
+                it++;
+            all_virtual.erase(it);
         }
     }
 }

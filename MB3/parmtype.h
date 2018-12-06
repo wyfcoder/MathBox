@@ -1,17 +1,28 @@
 #ifndef PARMTYPE_H
 #define PARMTYPE_H
 #include<QString>
-// 1-> 数字类 2->矩阵类 3->函数类 4->整数 5->double
+#include<function.h>
+#include"matrix.h"
 class ParmType
 {
 public:
     ParmType();
+ public:
     int type;
     int position;
     bool isTrue;
     double number;
     int n;
     QString name;
+    Function new_function;
+    Matrix new_matrix;
 };
 
+
+//NumberExpression 0
+//Number 1
+//FunctionExpression 2
+//Function 3
+//MatrixExpression 4
+//Matrix 5
 #endif // PARMTYPE_H

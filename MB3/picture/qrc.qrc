@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>delete.jpg</file>
+        <file>back.jpg</file>
+        <file>delete1.jpg</file>
+        <file>forward.jpg</file>
+        <file>main.jpg</file>
+        <file>new.jpg</file>
+        <file>open.jpg</file>
+        <file>paint.jpg</file>
+        <file>save.jpg</file>
+    </qresource>
+</RCC>

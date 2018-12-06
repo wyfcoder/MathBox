@@ -1,0 +1,55 @@
+Pro_MatrixDet 过程说明
+
+
+1.原型：
+
+ Pro_MatrixDet(Matrix m);
+
+ Pro_MatrixDet(Matrix m,Number save);
+
+2.说明：
+
+    该过程用于求解矩阵的行列式，第一个矩阵变量表示待求的矩阵，第二个数字变量用于存储结果，如果没有第二个变量，则将结果保存在Result里。
+
+
+#示例
+
+ Matrix m(2,2)=[1,2;3,4];
+
+ Number a=0;
+
+ Pro_MatrixDet(m);
+
+ Pro_MatrixDer(m,a);
+
+
+#输出
+
+ Matrix m(2,2)=[1,2;3,4];
+
+ >>New Matrix 
+
+ @ m=
+
+	1.000000 2.000000 
+	3.000000 4.000000 
+
+ Number a=0;
+
+ >>New Number 
+
+ @ a=0
+
+ Pro_MatrixDet(m);
+
+ @ Result=-2
+
+ Pro_MatrixDet(m,a);
+
+ >>Rewrite Number 
+
+ @ a=-2
+
+
+
+

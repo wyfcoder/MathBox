@@ -1,0 +1,51 @@
+Pro_EquationSolving说明文档
+
+
+1.使用原型
+
+ Pro_EquationSolving(Function f);
+
+ Pro_EquationSolving(Function f,Number save);
+
+ Pro_EquationSolving(Function f,double start,double end);
+
+ Pro_EquationSolving(Function f,Number start,Number end,Number saved);
+
+
+2.说明
+
+    该过程是用于求解非线性方程的数值算法过程，第一个过程接受一个Functon 变量，其中Function变量的自变量个数为1。第二个过程的第一个变量和第一个过程要求一样只是加了一个Number变量用于保存数值解。第三个过程的第一个变量是一个自变量个数为1的Function变量，第二个和第三个变量是Number类的一个运算表达式，表示用于搜素根的区间。第四个过程与第三个不同点只多了最后一个Number变量用于保存结果。
+
+
+3.
+#示例
+
+ Function f(x)=x+Sin(x+Cos(x));
+
+ Number save=1;
+
+ Pro_EquationSolving(f);
+
+ Pro_EquationSolving(f,-1,1,save);
+
+#输出
+
+ >>New Function 
+
+ @ f=x+Sin(x+Cos(x))
+
+ >>New Number 
+
+ @ save=1
+
+ >>Solve the equation, the answer is -0.4436003612
+
+ >>Solve the equation, the answer is -0.4436003566
+
+ >>Rewrite Number 
+
+ @ save=-0.4436
+
+
+
+

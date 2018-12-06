@@ -1,4 +1,5 @@
 #include <QtWidgets/QApplication>
+#include"matrix.h"
 class MainGauss
 {
 private:
@@ -10,6 +11,12 @@ private:
 public:
     MainGauss(int size);
     MainGauss();
+
+    //-----------------------
+    MainGauss(Matrix m);
+    Matrix new_matrix;
+
+    //-----------------------
     bool isTrue;
     QList<double> get();
     int size;

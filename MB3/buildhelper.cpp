@@ -177,7 +177,7 @@ bool buildhelper::save()
     return true;
 }
 
-buildhelper::C buildhelper::returnMode(QChar m)
+C buildhelper::returnMode(QChar m)
 {
     C c;
     c.isTrue=false;
@@ -220,6 +220,7 @@ buildhelper::C buildhelper::returnMode(QChar m)
             {
                 c.isTrue=true;
                 c.mode=3;
+                c.x=i;
                 c.number=numbers[i].value;
             }
         }
@@ -241,7 +242,7 @@ QString buildhelper::getName()
 
 bool buildhelper::isOpertate(QChar m)
 {
-    if(m=='*'||m=='+'||m=='/'||m=='-'||m=='('||m==')'||m==',')
+    if(m=='*'||m=='+'||m=='/'||m=='-'||m=='('||m==')'||m==','||m==';')
        return true;
        return false;
 }

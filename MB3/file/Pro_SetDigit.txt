@@ -1,0 +1,42 @@
+Pro_SetDigit 过程说明
+
+    在数值分析的运算结果方面，计算机会按默认的位数存储结果，但显示时确乎按一定的规则自行显示，而有时需要较高位数的结果，Pro_SetDigit过程就是用于改变显示结果位数的过程。
+    
+
+原型是：
+	Pro_SetDigit(Number a).
+  
+
+#示例
+
+#Input：
+
+ Number a=12;
+
+ a;
+
+ Pro_SetDigit(10);
+
+ a;
+
+
+#output：
+
+ >>New Number.
+
+ >> a=12.000
+
+ >>Rewrite Number.
+
+ >> a=12.000
+
+ >>Set Digit success.
+
+ >>Rewrite Number.
+
+ >> a=12.0000000000
+
+
+
+
+

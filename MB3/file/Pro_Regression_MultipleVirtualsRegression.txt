@@ -1,0 +1,48 @@
+Pro_Regression_MultipleVirtualsRegression说明文档
+
+    当你的数据需要进行多元回归，该过程就能派上用场。她能将你的数据回归成以下的格式 a+b1*x1+b2*x2+…bn*xn 。
+该过程的原型如下：
+
+ Pro_Regression_MultipleVirtualsRegression(Matrix data)，
+
+ Pro_Regression_MultipleVirtualsRegression(Matrix data,Function save)
+
+    第一个参数代表你的数据，你需要将你的数据一组一组的保存在Matrix变量里边。例如一个函数与三个独立的变量有关，那么存储时，现在矩阵的一行里依次输入变量的数据最后输入函数的值，也就是说这个矩阵的列数为4。第二个变量是用来保存回归结果的Function变量，是可以缺省的。注意的是输入的数据组的个数要大于回归变量的个数加一。
+
+
+#示例
+
+ Matrix data(4,4)=[1,2,3,4;3,2,1,5;3,5,6,12;4,6,7,18];
+
+ Function f(x)=x;
+
+ Pro_Regression_MultipleVirtualsRegression(data);
+
+ Pro_Regression_MultipleVirtualsRegression(data,f);
+
+
+#输出
+
+ >>New Matrix.
+
+ >> data=
+
+	1.000 2.000 3.000 4.000 
+	3.000 2.000 1.000 5.000 
+	3.000 5.000 6.000 12.000 
+	4.000 6.000 7.000 18.000 
+
+ >>New Function.
+
+ >> f=x
+
+ >> Result=-7.500000+10.000000*x0-13.500000*x1+9.500000*x2
+
+ >>Rewrite Function.
+
+ >> f=-7.500000+10.000000*x0-13.500000*x1+9.500000*x2
+
+
+
+
+
